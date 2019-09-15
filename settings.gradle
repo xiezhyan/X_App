@@ -1,0 +1,1 @@
+include ':example', ':core', ':core_annotations', ':core_compiler'
