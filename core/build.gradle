@@ -43,10 +43,10 @@ dependencies {
     api 'com.jakewharton:butterknife:9.0.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0'
     //网络请求依赖
-    api 'com.squareup.okio:okio:1.13.0'
-    api 'com.squareup.okhttp3:okhttp:3.8.1'
-    api 'com.squareup.retrofit2:retrofit:2.3.0'
-    api 'com.squareup.retrofit2:converter-scalars:2.3.0'
+    api 'com.squareup.okio:okio:1.14.0'
+    api 'com.squareup.okhttp3:okhttp:3.10.0'
+    api 'com.squareup.retrofit2:retrofit:2.4.0'
+    api 'com.squareup.retrofit2:converter-scalars:2.4.0'
     //Loader依赖
     api 'com.wang.avi:library:2.1.3'
     //字体
@@ -64,12 +64,12 @@ dependencies {
     api "com.github.Raizlabs.DBFlow:dbflow:4.1.2"
     api "com.github.Raizlabs.DBFlow:dbflow-sqlcipher:4.1.2"
     //微信依赖（包含统计）
-    api 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:1.3.4'
+    api 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:5.4.0'
     //沉浸式状态栏
     api 'com.github.niorgai:StatusBarCompat:2.1.3'
     //Google AutoValue
-    compileOnly 'com.google.auto.value:auto-value:1.4.1'
-    annotationProcessor "com.google.auto.value:auto-value:1.4.1"
+    compileOnly 'com.google.auto.value:auto-value:1.5.2'
+    annotationProcessor "com.google.auto.value:auto-value:1.5.2"
     //工具包
     api 'com.blankj:utilcode:1.7.1'
     //动态权限处理
@@ -85,9 +85,9 @@ dependencies {
     api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
     api 'com.choices.divider:RecyclerView_Divider:1.0.0'
     //Glide
-    api 'com.github.bumptech.glide:glide:4.0.0-RC0'
+    api 'com.github.bumptech.glide:glide:4.8.0'
     api 'com.github.bumptech.glide:okhttp3-integration:4.0.0-RC0@aar'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.0.0-RC0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
     //TabLayout https://github.com/H07000223/FlycoTabLayout/blob/master/README_CN.md
     api 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
 

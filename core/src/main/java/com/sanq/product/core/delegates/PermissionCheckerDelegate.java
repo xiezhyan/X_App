@@ -68,17 +68,11 @@ public abstract class PermissionCheckerDelegate extends BaseDelegates {
 
     private void showRationaleDialog(final PermissionRequest request) {
         new AlertDialog.Builder(getContext())
-                .setPositiveButton("同意使用", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        request.proceed();
-                    }
+                .setPositiveButton("同意使用", (DialogInterface dialog, int which) -> {
+                    request.proceed();
                 })
-                .setNegativeButton("拒绝使用", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        request.cancel();
-                    }
+                .setNegativeButton("拒绝使用", (DialogInterface dialog, int which) -> {
+                    request.cancel();
                 })
                 .setCancelable(false)
                 .setMessage("权限管理")
@@ -107,6 +101,7 @@ public abstract class PermissionCheckerDelegate extends BaseDelegates {
                     if (data != null) {
                         final Uri pickPath = data.getData();
                         //从相册选择后需要有个路径存放剪裁过的图片
+
                         final String pickCropPath = Camera.createCropFile().getPath();
                         UCrop.of(pickPath, Uri.parse(pickCropPath))
                                 .withMaxResultSize(600, 600)

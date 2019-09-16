@@ -6,7 +6,6 @@ import com.ToxicBakery.viewpager.transforms.DefaultTransformer;
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.listener.OnItemClickListener;
 import com.sanq.product.core.R;
-import com.sanq.product.core.ui.banner.HolderCreator;
 
 import java.util.ArrayList;
 

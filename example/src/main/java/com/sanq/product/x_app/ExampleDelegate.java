@@ -2,10 +2,12 @@ package com.sanq.product.x_app;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 
 import com.blankj.utilcode.util.ToastUtils;
 import com.sanq.product.core.delegates.CoreDelegate;
+import com.sanq.product.core.ui.refresh.RefreshHandler;
 import com.sanq.product.core.wechat.WeChat;
 
 import butterknife.BindView;
@@ -26,7 +28,13 @@ public class ExampleDelegate extends CoreDelegate {
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
-
+        //加载更多
+        new RefreshHandler.Builder()
+                .setRefreshLayout(new SwipeRefreshLayout(_mActivity))
+                .setRefresh(refreshLayout -> {
+                    refreshLayout.setRefreshing(false);
+                })
+                .build();
     }
 
     /**
