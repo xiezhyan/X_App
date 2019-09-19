@@ -2,6 +2,7 @@ package com.sanq.product.core.delegates.bottom;
 
 import android.widget.Toast;
 
+import com.blankj.utilcode.util.ToastUtils;
 import com.sanq.product.core.R;
 import com.sanq.product.core.app.Core;
 import com.sanq.product.core.delegates.CoreDelegate;
@@ -17,7 +18,7 @@ public abstract class BottomItemDelegate extends CoreDelegate {
             _mActivity.finish();
         } else {
             TOUCH_TIME = System.currentTimeMillis();
-            Toast.makeText(_mActivity, "双击退出" + Core.getApplication().getString(R.string.app_name), Toast.LENGTH_SHORT).show();
+            ToastUtils.showShort("再按一次退出");
         }
         return true;
     }

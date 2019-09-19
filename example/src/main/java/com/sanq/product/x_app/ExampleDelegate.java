@@ -14,8 +14,11 @@ import com.sanq.product.core.ui.recycler.MultipleItemEntity;
 import com.sanq.product.core.ui.recycler.MultipleRecyclerAdapter;
 import com.sanq.product.core.ui.recycler.MultipleViewHolder;
 import com.sanq.product.core.ui.refresh.RefreshHandler;
+import com.sanq.product.core.utils.callback.CallbackManager;
+import com.sanq.product.core.utils.callback.CallbackType;
 import com.sanq.product.core.wechat.WeChat;
 import com.sanq.product.x_app.recyclerList.DataConvert;
+import com.sanq.product.x_app.recyclerList.ExampleAdapter;
 
 import java.util.ArrayList;
 
@@ -54,7 +57,7 @@ public class ExampleDelegate extends CoreDelegate {
     //RecyclerView 解析数据
     private void initRecyclerList() {
         ArrayList<MultipleItemEntity> multipleItemEntities = new DataConvert().setJsonData("json data").convert();
-
+        ExampleAdapter adapter = new ExampleAdapter(multipleItemEntities);
     }
 
     /**

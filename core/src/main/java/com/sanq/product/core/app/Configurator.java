@@ -7,6 +7,8 @@ import android.support.annotation.Nullable;
 import com.blankj.utilcode.util.Utils;
 import com.joanzapata.iconify.IconFontDescriptor;
 import com.joanzapata.iconify.Iconify;
+import com.orhanobut.logger.AndroidLogAdapter;
+import com.orhanobut.logger.Logger;
 import com.raizlabs.android.dbflow.config.FlowConfig;
 import com.raizlabs.android.dbflow.config.FlowManager;
 import com.sanq.product.core.delegates.web.event.Event;
@@ -49,6 +51,7 @@ public class Configurator {
      */
     public final void configure() {
         initIcons();
+        Logger.addLogAdapter(new AndroidLogAdapter());
         CONFIGURATOR.put(ConfigType.CONFIG_READY.name(), true);
         //初始化工具类库
         Utils.init(Core.getApplication());
