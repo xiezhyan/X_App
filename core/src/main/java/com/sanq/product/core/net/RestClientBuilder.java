@@ -111,7 +111,7 @@ public class RestClientBuilder {
         return this;
     }
 
-    public final RestClientBuilder onRequest(IRequest iRequest) {
+    public final RestClientBuilder request(IRequest iRequest) {
         this.mIRequest = iRequest;
         return this;
     }
@@ -129,7 +129,7 @@ public class RestClientBuilder {
     }
 
 
-    public final RestClientBuilder onError(IError iError) {
+    public final RestClientBuilder error(IError iError) {
         this.mIError = iError;
         return this;
     }
