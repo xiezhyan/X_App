@@ -34,22 +34,19 @@ import butterknife.Unbinder;
  * @author sanq.Yan
  * @date 2019/6/20
  */
-public abstract class ToolbarDelegate extends PermissionCheckerDelegate implements OnMenuItemClickListener {
+public abstract class ToolbarDelegate extends CoreDelegate implements OnMenuItemClickListener {
 
     protected abstract ToolbarSetting getSetting();
 
     Toolbar mToolbar = null;
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = super.onCreateView(inflater, container, savedInstanceState);
-
-        mToolbar = view.findViewById(R.id.toolbar);
+    public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
+        mToolbar = rootView.findViewById(R.id.toolbar);
 
         setHasOptionsMenu(true);
         initToolbar();
-        return view;
+
     }
 
     private void initToolbar() {
