@@ -16,7 +16,6 @@ public class AppEvent extends Event {
     public String execute(String params) {
         ToastUtils.showShort(params);
 
-
         return null;
     }
 }

@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!--AutoPhotoLayout-->
-    <declare-styleable name="camera_flow_layout">
-        <attr name="max_count" format="integer" />
-        <attr name="item_margin" format="integer" />
-        <attr name="line_count" format="integer" />
-        <attr name="icon_size" format="dimension" />
-        <attr name="icon_text" format="string" />
-    </declare-styleable>
-
     <declare-styleable name="PayPsdInputView">
         <attr name="maxCount" format="integer" />
         <attr name="circleColor" format="color" />

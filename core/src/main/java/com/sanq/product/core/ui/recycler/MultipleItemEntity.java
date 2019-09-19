@@ -17,7 +17,7 @@ public class MultipleItemEntity implements MultiItemEntity {
         FIELDS_REFERENCE.get().putAll(fields);
     }
 
-    public static MultipleEntityBuilder builder(){
+    public static MultipleEntityBuilder builder() {
         return new MultipleEntityBuilder();
     }
 
@@ -27,16 +27,16 @@ public class MultipleItemEntity implements MultiItemEntity {
     }
 
     @SuppressWarnings("unchecked")
-    public final <T> T getField(Object key){
+    public final <T> T getField(Object key) {
         return (T) FIELDS_REFERENCE.get().get(key);
     }
 
-    public final LinkedHashMap<?,?> getFields(){
+    public final LinkedHashMap<?, ?> getFields() {
         return FIELDS_REFERENCE.get();
     }
 
-    public final MultipleItemEntity setField(Object key,Object value){
-        FIELDS_REFERENCE.get().put(key,value);
+    public final MultipleItemEntity setField(Object key, Object value) {
+        FIELDS_REFERENCE.get().put(key, value);
         return this;
     }
 }
