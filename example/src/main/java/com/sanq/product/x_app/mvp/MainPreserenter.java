@@ -3,12 +3,7 @@ package com.sanq.product.x_app.mvp;
 import com.sanq.product.core.mvp.listener.ResultCallbackListener;
 import com.sanq.product.core.mvp.presenter.BasePresenter;
 
-public class MainPreserenter extends BasePresenter<MainContract.MainModel, MainContract.MainView> implements MainContract.MainPreserenter {
-
-    @Override
-    protected MainContract.MainModel createModule() {
-        return new MainModel();
-    }
+public class MainPreserenter extends BasePresenter<MainModel, MainContract.MainView> implements MainContract.MainPreserenter {
 
     @Override
     public void start() {
@@ -29,6 +24,6 @@ public class MainPreserenter extends BasePresenter<MainContract.MainModel, MainC
             }).build();
 
             getModule().login(loginName, loginPwd, callback);
-        }
+    }
     }
 }

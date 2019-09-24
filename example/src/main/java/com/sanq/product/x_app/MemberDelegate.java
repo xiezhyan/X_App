@@ -4,40 +4,32 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
+import com.blankj.utilcode.util.LogUtils;
 import com.orhanobut.logger.Logger;
+import com.sanq.product.annotations.generator.mvp.InjectPresenter;
 import com.sanq.product.core.delegates.CoreMvpDelegate;
-import com.sanq.product.core.net.RestClientBuilder;
 import com.sanq.product.core.ui.loading.Loading;
 import com.sanq.product.core.utils.callback.CallbackManager;
 import com.sanq.product.core.utils.callback.CallbackType;
+import com.sanq.product.x_app.mvp.MainContract;
 import com.sanq.product.x_app.mvp.MainPreserenter;
 
-public class MemberDelegate extends CoreMvpDelegate<MainPreserenter, String> {
+public class MemberDelegate extends CoreMvpDelegate<MainPreserenter, String> implements MainContract.MainView{
 
+    @InjectPresenter
+    private MainPreserenter mainPreserenter;
 
     @Override
     public Object getContentView() {
-        return null;
-    }
-
-    RestClientBuilder builder;
-
-    @Override
-    public void onLazyInitView(@Nullable Bundle savedInstanceState) {
-        super.onLazyInitView(savedInstanceState);
+        return R.layout.activity_main;
     }
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
         super.onBindView(savedInstanceState, rootView);
 
-        presenter.login("", "");
+        mainPreserenter.login("", "");
 
-    }
-
-    @Override
-    protected MainPreserenter createPresenter() {
-        return new MainPreserenter();
     }
 
     /**
@@ -62,11 +54,12 @@ public class MemberDelegate extends CoreMvpDelegate<MainPreserenter, String> {
 
     @Override
     public void onSuccess(String result) {
-        Logger.i("result", result);
+        LogUtils.i(getClass().getName(), result);
     }
 
     @Override
     public void onFailure() {
         Logger.i("failed");
     }
+
 }

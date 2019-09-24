@@ -10,11 +10,11 @@ public class MainContract {
         void login(String loginName, String loginPwd, ResultCallbackListener callback);
     }
 
-    interface MainView extends IBaseView<String> {
+    public interface MainView extends IBaseView<String> {
 
     }
 
-    interface MainPreserenter {
+    public interface MainPreserenter {
         void login(String loginName, String loginPwd);
     }
 }

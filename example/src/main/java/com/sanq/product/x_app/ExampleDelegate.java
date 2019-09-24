@@ -8,6 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.blankj.utilcode.util.ToastUtils;
+import com.sanq.product.core.account.AccountManager;
+import com.sanq.product.core.account.IUserChecker;
 import com.sanq.product.core.delegates.CoreDelegate;
 import com.sanq.product.core.ui.recycler.MultipleFields;
 import com.sanq.product.core.ui.recycler.MultipleItemEntity;

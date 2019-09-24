@@ -6,7 +6,9 @@ import com.sanq.product.core.mvp.view.IBaseView;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
+import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Proxy;
+import java.lang.reflect.Type;
 
 public abstract class BasePresenter<M extends IBaseModel, V extends IBaseView> {
     private V mProxyView;
@@ -24,7 +26,19 @@ public abstract class BasePresenter<M extends IBaseModel, V extends IBaseView> {
                 view.getClass().getInterfaces(),
                 new MvpViewHandler(weakReference.get()));
         if (this.module == null) {
-            this.module = createModule();
+            //通过获得泛型类的父类，拿到泛型的接口类实例，通过反射来实例化 model
+            ParameterizedType type = (ParameterizedType) this.getClass().getGenericSuperclass();
+
+            if (type != null) {
+                Type[] types = type.getActualTypeArguments();
+                try {
+                    module = (M) ((Class<?>) types[0]).newInstance();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (InstantiationException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 
@@ -61,12 +75,6 @@ public abstract class BasePresenter<M extends IBaseModel, V extends IBaseView> {
     protected void dismissLoading() {
         getView().dismissLoading();
     }
-
-
-    /**
-     * 通过该方法创建Module
-     */
-    protected abstract M createModule();
 
     /**
      * 初始化方法

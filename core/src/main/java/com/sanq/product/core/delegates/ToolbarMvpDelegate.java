@@ -15,12 +15,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.sanq.product.annotations.generator.mvp.InjectPresenter;
 import com.sanq.product.core.R;
 import com.sanq.product.core.delegates.toolbar.OnMenuItemClickListener;
 import com.sanq.product.core.delegates.toolbar.ToolbarGravity;
 import com.sanq.product.core.delegates.toolbar.ToolbarSetting;
 import com.sanq.product.core.mvp.presenter.BasePresenter;
 import com.sanq.product.core.mvp.view.IBaseView;
+
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * com.sanq.product.core.delegates.ToolbarDelegate
@@ -30,15 +35,36 @@ import com.sanq.product.core.mvp.view.IBaseView;
  */
 public abstract class ToolbarMvpDelegate<P extends BasePresenter, T>  extends ToolbarDelegate implements IBaseView<T> {
 
-    protected P presenter;
+    /**
+     * 保存使用注解的 Presenter ，用于解绑
+     */
+    private List<P> mInjectPresenters;
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
         super.onBindView(savedInstanceState, rootView);
 
-        presenter = createPresenter();
-        if (presenter != null) {
-            presenter.attachView(this);
+        mInjectPresenters = new ArrayList<>();
+
+        //获得已经申明的变量，包括私有的
+        Field[] fields = this.getClass().getDeclaredFields();
+        for (Field field : fields) {
+            //获取变量上面的注解类型
+            InjectPresenter injectPresenter = field.getAnnotation(InjectPresenter.class);
+            if (injectPresenter != null) {
+                try {
+                    Class<P> type = (Class<P>) field.getType();
+                    P mInjectPresenter = null;
+                    mInjectPresenter = type.newInstance();
+                    mInjectPresenter.attachView(this);
+                    field.setAccessible(true);
+                    field.set(this, mInjectPresenter);
+                    mInjectPresenters.add(mInjectPresenter);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    throw new RuntimeException("SubClass must extends Class:BasePresenter");
+                }
+            }
         }
     }
 
@@ -46,14 +72,12 @@ public abstract class ToolbarMvpDelegate<P extends BasePresenter, T>  extends To
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (presenter != null) {
+
+        for (P presenter : mInjectPresenters) {
             presenter.detachView();
-            presenter = null;
         }
+        mInjectPresenters.clear();
+        mInjectPresenters = null;
     }
 
-    /**
-     * 创建Presenter
-     */
-    protected abstract P createPresenter();
 }

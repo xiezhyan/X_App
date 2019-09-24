@@ -17,7 +17,7 @@ public class MainActivity extends ProxyActivity implements
 
     @Override
     protected CoreDelegate setRootDelegate() {
-        return null;
+        return new MemberDelegate();
     }
 
     @Override
