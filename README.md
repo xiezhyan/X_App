@@ -13,7 +13,8 @@ allprojects {
 }
 ```
 > 引用
-目前：V1.2
+
+[![](https://jitpack.io/v/xiezhyan/X_App.svg)](https://jitpack.io/#xiezhyan/X_App)
 ```
 implementation 'com.github.xiezhyan:X_App:Tag'
 ```
