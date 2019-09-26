@@ -25,13 +25,6 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
-    lintOptions {
-        abortOnError false
-    }
-    sourceSets {
-        main.java.srcDirs += 'src/main/java'
-    }
 }
 
 dependencies {
@@ -103,18 +96,4 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     api project(':core_annotations')
-}
-
-task sourcesJar(type: Jar) {
-    classifier = 'sources'
-    from android.sourceSets.main.java.srcDirs
-}
-
-task classesJar(type: Jar) {
-    from "$buildDir/intermediates/classes/release"
-}
-
-artifacts {
-    archives classesJar
-    archives sourcesJar
 }
