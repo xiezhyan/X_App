@@ -1,5 +1,23 @@
 # X_App
 
+#### 使用
+> 仓库地址
+```
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+    }
+}
+```
+> 引用
+目前：V1.2
+```
+implementation 'com.github.xiezhyan:X_App:Tag'
+```
+
 #### 介绍
 整理学习到的Android技能成通用框架
 
