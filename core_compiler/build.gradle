@@ -1,6 +1,6 @@
 apply plugin: 'java-library'
 
-apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'maven'
 group='com.github.xiezhyan'
 
 dependencies {
@@ -14,22 +14,17 @@ dependencies {
 sourceCompatibility = "7"
 targetCompatibility = "7"
 
-
 task sourcesJar(type: Jar, dependsOn: classes) {
     classifier = 'sources'
     from sourceSets.main.allSource
 }
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
-    classifier = 'sources'
-    from sourceSets.main.allSource
-}
-
-task classesJar(type: Jar) {
-    from "$buildDir/libs"
+    classifier = 'javadoc'
+    from javadoc.destinationDir
 }
 
 artifacts {
     archives sourcesJar
-    archives classesJar
+    archives javadocJar
 }
