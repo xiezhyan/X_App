@@ -1,6 +1,6 @@
 apply plugin: 'java-library'
 apply plugin: 'com.github.dcendents.android-maven'
-group='com.gitee.xiezhyan'
+group='com.github.xiezhyan'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])

@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.jakewharton.butterknife'
 
 apply plugin: 'com.github.dcendents.android-maven'
-group='com.gitee.xiezhyan'
+group='com.github.xiezhyan'
 
 android {
     compileSdkVersion 28

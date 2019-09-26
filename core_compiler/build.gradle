@@ -1,5 +1,8 @@
 apply plugin: 'java-library'
 
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.github.xiezhyan'
+
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     api project(':core_annotations')
@@ -10,3 +13,23 @@ dependencies {
 
 sourceCompatibility = "7"
 targetCompatibility = "7"
+
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+task classesJar(type: Jar) {
+    from "$buildDir/libs"
+}
+
+artifacts {
+    archives sourcesJar
+    archives classesJar
+}
