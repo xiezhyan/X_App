@@ -54,7 +54,26 @@ public class LoginDelegate extends CoreDelegate {
        
 
     }
+    
+    @Override
+    public void onLazyInitView(@Nullable Bundle savedInstanceState) {
+        super.onLazyInitView(savedInstanceState);
+        
+        webview();
+    }
+    
+    private void webview() {
+        final WebDelegateImpl delegate = WebDelegateImpl.create("index.html");
+        delegate.setTopDelegate(this.getParentDelegate());
+        // R.id.web_discovery_container 容器
+        getSupportDelegate().loadRootFragment(R.id.web_discovery_container, delegate);
+    }
 
+    @Override
+    public FragmentAnimator onCreateFragmentAnimator() {
+        return new DefaultHorizontalAnimator();
+    }
+    
     private void loginAndreg() {
         //将信息存入，标记已经登录
         AccountManager.setSignState(true);
