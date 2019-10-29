@@ -30,6 +30,9 @@ public class MemberDelegate extends CoreMvpDelegate<MainPreserenter, String> imp
 
         mainPreserenter.login("", "");
 
+        rootView.findViewById(R.id.fab).setOnClickListener((v) -> {
+            start(new DiscoverDelegate());
+        });
     }
 
     /**

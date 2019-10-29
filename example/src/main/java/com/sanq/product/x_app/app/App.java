@@ -25,7 +25,7 @@ public class App extends Application {
                 .withDBFlow()
                 .withApiHost("")
                 .withJavascriptInterface("app")
-                .withWebEvent("appEvent", new AppEvent())
+                .withWebEvent("comment", new AppEvent())
                 .withIcons(new FontsIconDescriptor())
                 .configure();
 

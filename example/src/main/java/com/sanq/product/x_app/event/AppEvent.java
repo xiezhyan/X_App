@@ -1,5 +1,7 @@
 package com.sanq.product.x_app.event;
 
+import android.webkit.WebView;
+
 import com.blankj.utilcode.util.ToastUtils;
 import com.sanq.product.core.delegates.web.event.Event;
 
@@ -15,7 +17,7 @@ public class AppEvent extends Event {
         var json = {
             action: "test"
         };
-        appEvent.event(JSON.stringify(json));
+        app.event(JSON.stringify(json));
     */
 
     @Override
@@ -23,14 +25,9 @@ public class AppEvent extends Event {
         ToastUtils.showShort(params);
 
         // 执行js方法
-        if(getAction().equals("test")) {
+        if(getAction().equals("comment")) {
             final WebView webView = getWebView();
-            webView.post(new Runnable() {
-                @Override
-                public void run() {
-                    webView.evaluateJavascript("nativeCall();", null);
-                }
-            });
+            webView.post(() -> webView.evaluateJavascript("nativeCall('kkk');", null));
         }
         
         return null;

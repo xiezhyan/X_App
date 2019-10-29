@@ -12,6 +12,7 @@ import com.sanq.product.core.account.AccountManager;
 import com.sanq.product.core.account.ISignListener;
 import com.sanq.product.core.account.IUserChecker;
 import com.sanq.product.core.delegates.CoreDelegate;
+import com.sanq.product.core.delegates.web.WebDelegateImpl;
 import com.sanq.product.core.launcher.ILauncherListener;
 import com.sanq.product.core.launcher.OnLauncherFinishTag;
 import com.sanq.product.core.ui.recycler.MultipleItemEntity;
@@ -21,6 +22,9 @@ import com.sanq.product.x_app.recyclerList.DataConvert;
 import com.sanq.product.x_app.recyclerList.ExampleAdapter;
 
 import java.util.ArrayList;
+
+import me.yokeyword.fragmentation.anim.DefaultHorizontalAnimator;
+import me.yokeyword.fragmentation.anim.FragmentAnimator;
 
 /**
  * com.sanq.product.x_app.ExampleDelegate
