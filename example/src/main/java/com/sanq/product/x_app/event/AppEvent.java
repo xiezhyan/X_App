@@ -15,12 +15,24 @@ public class AppEvent extends Event {
         var json = {
             action: "test"
         };
+        appEvent.event(JSON.stringify(json));
     */
 
     @Override
     public String execute(String params) {
         ToastUtils.showShort(params);
 
+        // 执行js方法
+        if(getAction().equals("test")) {
+            final WebView webView = getWebView();
+            webView.post(new Runnable() {
+                @Override
+                public void run() {
+                    webView.evaluateJavascript("nativeCall();", null);
+                }
+            });
+        }
+        
         return null;
     }
 }
