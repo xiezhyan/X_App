@@ -10,7 +10,12 @@ import com.sanq.product.core.delegates.web.event.Event;
  * @date 2019/9/15
  */
 public class AppEvent extends Event {
-
+    
+    /** 格式
+        var json = {
+            action: "test"
+        };
+    */
 
     @Override
     public String execute(String params) {
