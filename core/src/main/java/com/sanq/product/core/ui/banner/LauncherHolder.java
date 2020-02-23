@@ -1,4 +1,4 @@
-package com.sanq.product.core.ui.launcher;
+package com.sanq.product.core.ui.banner;
 
 import android.content.Context;
 import android.support.v7.widget.AppCompatImageView;

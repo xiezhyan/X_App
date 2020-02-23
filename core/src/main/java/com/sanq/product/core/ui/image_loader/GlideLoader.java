@@ -37,28 +37,35 @@ public class GlideLoader {
                 .dontAnimate();
     }
 
-    /**
-     * 使用Glide加载图片
-     *
-     * @param imageView
-     * @param url
-     */
     public RequestBuilder<Drawable> imageLoader(ImageView imageView, String url) {
         ProxyActivity activity = Core.getConfiguration(ConfigType.ACTIVITY);
 
-        return loadImage(activity, imageView, url, null);
+        return loadImage(activity, imageView, url, null, getImageLoaderOptions());
     }
 
     public RequestBuilder<Drawable> imageLoader(ImageView imageView, String url, RequestListener listener) {
         ProxyActivity activity = Core.getConfiguration(ConfigType.ACTIVITY);
 
-        return loadImage(activity, imageView, url, listener);
+        return loadImage(activity, imageView, url, listener, getImageLoaderOptions());
     }
 
-    private RequestBuilder<Drawable> loadImage(ProxyActivity activity, ImageView imageView, String url, RequestListener listener) {
+    public RequestBuilder<Drawable> imageLoader(ImageView imageView,
+                                                String url,
+                                                RequestListener listener,
+                                                RequestOptions requestOptions) {
+        ProxyActivity activity = Core.getConfiguration(ConfigType.ACTIVITY);
+
+        return loadImage(activity, imageView, url, listener, requestOptions);
+    }
+
+    private RequestBuilder<Drawable> loadImage(ProxyActivity activity,
+                                               ImageView imageView,
+                                               String url,
+                                               RequestListener listener,
+                                               RequestOptions requestOptions) {
         RequestBuilder<Drawable> apply = Glide.with(activity)
                 .load(url)
-                .apply(getImageLoaderOptions());
+                .apply(requestOptions);
 
         if (listener != null)
             apply.listener(listener);

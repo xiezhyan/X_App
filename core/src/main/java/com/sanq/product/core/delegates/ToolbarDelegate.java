@@ -96,7 +96,7 @@ public abstract class ToolbarDelegate extends CoreDelegate implements OnMenuItem
             View view = toolbar.getChildAt(i);
             if (view instanceof TextView) {
                 TextView textView = (TextView) view;
-                if (title.equals(textView.getText())) {
+                if (title.contentEquals(textView.getText())) {
                     textView.setGravity(Gravity.CENTER);
                     Toolbar.LayoutParams params = new Toolbar.LayoutParams(Toolbar.LayoutParams.WRAP_CONTENT, Toolbar.LayoutParams.MATCH_PARENT);
                     params.gravity = Gravity.CENTER;
@@ -119,7 +119,7 @@ public abstract class ToolbarDelegate extends CoreDelegate implements OnMenuItem
         if (item.getItemId() == android.R.id.home) {
             pop();
         } else {
-            menuItemClick(item);
+            onMenuItemClick(item);
         }
         return true;
     }

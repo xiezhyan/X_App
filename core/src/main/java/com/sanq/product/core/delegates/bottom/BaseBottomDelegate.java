@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.LinearLayoutCompat;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.RelativeLayout;
@@ -80,6 +81,9 @@ public abstract class BaseBottomDelegate extends BaseDelegates implements View.O
             itemIcon.setText(bean.getIcon());
             itemTitle.setText(bean.getTitle());
             if (i == mIndexDelegate) {
+                if (!TextUtils.isEmpty(bean.getIconActive())) {
+                    itemIcon.setText(bean.getIconActive());
+                }
                 itemIcon.setTextColor(mClickedColor);
                 itemTitle.setTextColor(mClickedColor);
             }
@@ -92,9 +96,12 @@ public abstract class BaseBottomDelegate extends BaseDelegates implements View.O
     private void resetColor() {
         final int count = mBottomBar.getChildCount();
         for (int i = 0; i < count; i++) {
+            final BottomTabBean bean = TAB_BEANS.get(i);
             final RelativeLayout item = (RelativeLayout) mBottomBar.getChildAt(i);
             final IconTextView itemIcon = (IconTextView) item.getChildAt(0);
+            itemIcon.setText(bean.getIcon());
             itemIcon.setTextColor(Color.GRAY);
+
             final AppCompatTextView itemTitle = (AppCompatTextView) item.getChildAt(1);
             itemTitle.setTextColor(Color.GRAY);
         }
@@ -104,11 +111,19 @@ public abstract class BaseBottomDelegate extends BaseDelegates implements View.O
     public void onClick(View v) {
         final int tag = (int) v.getTag();
         resetColor();
+        final BottomTabBean bean = TAB_BEANS.get(tag);
+
         final RelativeLayout item = (RelativeLayout) v;
         final IconTextView itemIcon = (IconTextView) item.getChildAt(0);
+
+        if (!TextUtils.isEmpty(bean.getIconActive())) {
+            itemIcon.setText(bean.getIconActive());
+        }
         itemIcon.setTextColor(mClickedColor);
+
         final AppCompatTextView itemTitle = (AppCompatTextView) item.getChildAt(1);
         itemTitle.setTextColor(mClickedColor);
+
         getSupportDelegate().showHideFragment(ITEM_DELEGATES.get(tag), ITEM_DELEGATES.get(mCurrentDelegate));
         //注意先后顺序
         mCurrentDelegate = tag;

@@ -1,10 +1,7 @@
 package com.sanq.product.core.delegates.bottom;
 
-import android.widget.Toast;
 
 import com.blankj.utilcode.util.ToastUtils;
-import com.sanq.product.core.R;
-import com.sanq.product.core.app.Core;
 import com.sanq.product.core.delegates.CoreDelegate;
 
 public abstract class BottomItemDelegate extends CoreDelegate {

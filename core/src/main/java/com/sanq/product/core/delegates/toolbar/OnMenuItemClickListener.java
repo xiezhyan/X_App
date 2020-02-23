@@ -10,6 +10,6 @@ import android.view.MenuItem;
  */
 public interface OnMenuItemClickListener {
 
-    void menuItemClick(MenuItem item);
+    void onMenuItemClick(MenuItem item);
 
 }

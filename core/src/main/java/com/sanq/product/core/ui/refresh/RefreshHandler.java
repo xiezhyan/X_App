@@ -10,7 +10,7 @@ public class RefreshHandler implements SwipeRefreshLayout.OnRefreshListener {
     private final SwipeRefreshLayout REFRESH_LAYOUT;
     private IRefresh mIRefresh;
 
-    public RefreshHandler(SwipeRefreshLayout REFRESH_LAYOUT, IRefresh iRefresh) {
+    private RefreshHandler(SwipeRefreshLayout REFRESH_LAYOUT, IRefresh iRefresh) {
         this.REFRESH_LAYOUT = REFRESH_LAYOUT;
         this.mIRefresh = iRefresh;
 
@@ -37,8 +37,6 @@ public class RefreshHandler implements SwipeRefreshLayout.OnRefreshListener {
         }
         /**
          * 设置颜色
-         * @param colorResIds
-         * @return
          */
         public Builder setColorSchemeResources(@ColorRes int... colorResIds) {
             this.refreshLayout.setColorSchemeResources(colorResIds);

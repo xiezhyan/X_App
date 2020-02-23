@@ -1,9 +1,6 @@
 package com.sanq.product.core.utils.string;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 
 public class DigestUtil {
@@ -23,15 +20,6 @@ public class DigestUtil {
 		return instance;
 	}
 	
-	/**
-	 * 
-	 *	version:md5加密
-	 *	@param msg	要加密的数据
-	 *	@return
-	 *----------------------
-	 * 	author:xiezhyan
-	 *	date:2017-6-5
-	 */
 	public String md5(String msg) {
 		try {
 			MessageDigest digest = MessageDigest.getInstance("MD5");
@@ -49,9 +37,7 @@ public class DigestUtil {
 				}
 				return sb.toString();
 			}
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		} catch (UnsupportedEncodingException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return "";
