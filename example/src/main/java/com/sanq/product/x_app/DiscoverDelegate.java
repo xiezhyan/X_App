@@ -66,7 +66,7 @@ public class DiscoverDelegate extends ToolbarDelegate {
     }
 
     @Override
-    public void menuItemClick(MenuItem item) {
+    public void onMenuItemClick(MenuItem item) {
 
     }
 }

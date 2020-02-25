@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestBuilder;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
 import com.sanq.product.core.activities.ProxyActivity;
@@ -22,15 +23,13 @@ public class GlideLoader {
     }
 
     public static class HOLDER {
-        public static final GlideLoader INSTANCE = new GlideLoader();
+        static final GlideLoader INSTANCE = new GlideLoader();
     }
 
     /**
      * Glide加载图片策略
-     *
-     * @return
      */
-    private RequestOptions getImageLoaderOptions() {
+    public RequestOptions getImageLoaderOptions() {
         return new RequestOptions()
                 .centerCrop()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -41,6 +40,21 @@ public class GlideLoader {
         ProxyActivity activity = Core.getConfiguration(ConfigType.ACTIVITY);
 
         return loadImage(activity, imageView, url, null, getImageLoaderOptions());
+    }
+
+    /**
+     * 圆角图片
+     */
+    public RequestBuilder<Drawable> imageLoader(ImageView imageView, String url, int radius) {
+        ProxyActivity activity = Core.getConfiguration(ConfigType.ACTIVITY);
+
+        return loadImage(activity, imageView, url, null, getImageLoaderOptions().transform(new RoundedCorners(radius)));
+    }
+
+    public RequestBuilder<Drawable> imageLoader(ImageView imageView, String url, RequestOptions options) {
+        ProxyActivity activity = Core.getConfiguration(ConfigType.ACTIVITY);
+
+        return loadImage(activity, imageView, url, null, options);
     }
 
     public RequestBuilder<Drawable> imageLoader(ImageView imageView, String url, RequestListener listener) {
