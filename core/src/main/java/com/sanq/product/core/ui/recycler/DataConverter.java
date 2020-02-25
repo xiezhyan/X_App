@@ -2,20 +2,20 @@ package com.sanq.product.core.ui.recycler;
 
 import java.util.ArrayList;
 
-public abstract class DataConverter {
+public abstract class DataConverter<T> {
 
     protected final ArrayList<MultipleItemEntity> ENTITIES = new ArrayList<>();
-    private String mJsonData = null;
+    private T mJsonData = null;
 
     public abstract ArrayList<MultipleItemEntity> convert();
 
-    public DataConverter setJsonData(String json) {
+    public DataConverter setJsonData(T json) {
         this.mJsonData = json;
         return this;
     }
 
-    protected String getJsonData() {
-        if (mJsonData == null || mJsonData.isEmpty()) {
+    protected T getJsonData() {
+        if (mJsonData == null) {
             throw new NullPointerException("DATA IS NULL!");
         }
         return mJsonData;
