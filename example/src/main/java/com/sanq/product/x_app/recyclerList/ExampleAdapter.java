@@ -2,7 +2,6 @@ package com.sanq.product.x_app.recyclerList;
 
 import android.support.v7.widget.GridLayoutManager;
 
-import com.sanq.product.core.ui.recycler.ItemType;
 import com.sanq.product.core.ui.recycler.MultipleFields;
 import com.sanq.product.core.ui.recycler.MultipleItemEntity;
 import com.sanq.product.core.ui.recycler.MultipleRecyclerAdapter;

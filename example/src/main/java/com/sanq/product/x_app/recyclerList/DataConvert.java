@@ -7,7 +7,7 @@ import com.sanq.product.core.ui.recycler.MultipleItemEntity;
 
 import java.util.ArrayList;
 
-public class DataConvert extends DataConverter {
+public class DataConvert extends DataConverter<String> {
 
 
     @Override
