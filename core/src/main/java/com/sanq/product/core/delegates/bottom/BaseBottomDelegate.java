@@ -29,11 +29,13 @@ public abstract class BaseBottomDelegate extends BaseDelegates implements View.O
     private final ArrayList<BottomTabBean> TAB_BEANS = new ArrayList<>();
     private final ArrayList<BottomItemDelegate> ITEM_DELEGATES = new ArrayList<>();
     private final LinkedHashMap<BottomTabBean, BottomItemDelegate> ITEMS = new LinkedHashMap<>();
+
     private int mCurrentDelegate = 0;
     private int mIndexDelegate = 0;
     private int mClickedColor = Color.RED;
 
     public abstract LinkedHashMap<BottomTabBean, BottomItemDelegate> setItems(ItemBuilder builder);
+
     public abstract int setIndexDelegate();
     @ColorInt
     public abstract int setClickedColor();
@@ -49,7 +51,10 @@ public abstract class BaseBottomDelegate extends BaseDelegates implements View.O
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         mIndexDelegate = setIndexDelegate();
+        mCurrentDelegate = setIndexDelegate();
+
         if (setClickedColor() != 0) {
             mClickedColor = setClickedColor();
         }
