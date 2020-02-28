@@ -23,19 +23,7 @@ public class ExampleAdapter extends MultipleRecyclerAdapter {
     }
 
     @Override
-    public void onItemClick(int position) {
-
-    }
-
-    @Override
     protected void convert(MultipleViewHolder helper, MultipleItemEntity item) {
-        switch (helper.getItemViewType()) {
-            case ItemType.TEXT:
-                final int id = item.getField(MultipleFields.ID);
-
-                helper.setText(R.id.bottom_view, id + "");
-                break;
-        }
     }
 
     @Override

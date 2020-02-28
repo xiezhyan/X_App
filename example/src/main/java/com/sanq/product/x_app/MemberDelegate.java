@@ -8,6 +8,7 @@ import com.blankj.utilcode.util.LogUtils;
 import com.orhanobut.logger.Logger;
 import com.sanq.product.annotations.generator.mvp.InjectPresenter;
 import com.sanq.product.core.delegates.CoreMvpDelegate;
+import com.sanq.product.core.ui.image_loader.GlideLoader;
 import com.sanq.product.core.ui.loading.Loading;
 import com.sanq.product.core.utils.callback.CallbackManager;
 import com.sanq.product.core.utils.callback.CallbackType;
@@ -33,6 +34,9 @@ public class MemberDelegate extends CoreMvpDelegate<MainPreserenter, String> imp
         rootView.findViewById(R.id.fab).setOnClickListener((v) -> {
             start(new DiscoverDelegate());
         });
+
+        GlideLoader.getInstance().imageLoader(rootView.findViewById(R.id.iv),
+                "https://cdn.static.17k.com/book/189x272/58/13/3031358.jpg-180x240?v=1567222961000");
     }
 
     /**
