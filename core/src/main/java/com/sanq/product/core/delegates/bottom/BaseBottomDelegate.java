@@ -114,6 +114,8 @@ public abstract class BaseBottomDelegate extends BaseDelegates implements View.O
 
     @Override
     public void onClick(View v) {
+        mCurrentDelegate = setIndexDelegate();
+        
         final int tag = (int) v.getTag();
         resetColor();
         final BottomTabBean bean = TAB_BEANS.get(tag);
