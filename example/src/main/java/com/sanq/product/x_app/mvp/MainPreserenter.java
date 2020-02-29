@@ -24,6 +24,6 @@ public class MainPreserenter extends BasePresenter<MainModel, MainContract.MainV
             }).build();
 
             getModule().login(loginName, loginPwd, callback);
-    }
+        }
     }
 }

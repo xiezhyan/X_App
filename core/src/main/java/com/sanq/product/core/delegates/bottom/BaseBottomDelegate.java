@@ -37,6 +37,7 @@ public abstract class BaseBottomDelegate extends BaseDelegates implements View.O
     public abstract LinkedHashMap<BottomTabBean, BottomItemDelegate> setItems(ItemBuilder builder);
 
     public abstract int setIndexDelegate();
+
     @ColorInt
     public abstract int setClickedColor();
 
@@ -114,10 +115,10 @@ public abstract class BaseBottomDelegate extends BaseDelegates implements View.O
 
     @Override
     public void onClick(View v) {
-        mCurrentDelegate = setIndexDelegate();
-        
         final int tag = (int) v.getTag();
+
         resetColor();
+
         final BottomTabBean bean = TAB_BEANS.get(tag);
 
         final RelativeLayout item = (RelativeLayout) v;
@@ -134,6 +135,32 @@ public abstract class BaseBottomDelegate extends BaseDelegates implements View.O
         getSupportDelegate().showHideFragment(ITEM_DELEGATES.get(tag), ITEM_DELEGATES.get(mCurrentDelegate));
         //注意先后顺序
         mCurrentDelegate = tag;
+    }
+
+    /**
+     * 用于从 一个Fragment跳转到另一个Fragment  设置Tab显示
+     */
+    public void setTab(BottomItemDelegate show, BottomItemDelegate hide) {
+        final int showIndex = ITEM_DELEGATES.indexOf(show);
+
+        resetColor();
+
+        final RelativeLayout item = (RelativeLayout) mBottomBar.getChildAt(showIndex);
+        final BottomTabBean bean = TAB_BEANS.get(showIndex);
+
+        final IconTextView itemIcon = (IconTextView) item.getChildAt(0);
+
+        if (!TextUtils.isEmpty(bean.getIconActive())) {
+            itemIcon.setText(bean.getIconActive());
+        }
+        itemIcon.setTextColor(mClickedColor);
+
+        final AppCompatTextView itemTitle = (AppCompatTextView) item.getChildAt(1);
+        itemTitle.setTextColor(mClickedColor);
+
+        getSupportDelegate().showHideFragment(show, hide);
+
+        mCurrentDelegate = showIndex;
     }
 
 }

@@ -1,8 +1,7 @@
-package com.sanq.product.core.utils.system;
+package com.sanq.product.core.utils.storage;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 
 import com.blankj.utilcode.util.StringUtils;
 import com.sanq.product.core.app.Core;
@@ -81,6 +80,8 @@ public class SpUtil {
 
         if (!StringUtils.isEmpty(key) && val != null)
             save(key, val, edit);
+
+        SharedPreferencesCompat.apply(edit);
 
         return instance;
     }

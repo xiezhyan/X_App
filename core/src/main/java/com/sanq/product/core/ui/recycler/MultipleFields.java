@@ -7,5 +7,6 @@ public enum MultipleFields {
     TITLE,
     TEXT,
     IMAGE_URL,
-    BANNERS
+    BANNERS,
+    IS_CHECKED     // 设置是否选中
 }
